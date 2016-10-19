@@ -1,17 +1,17 @@
 {% extends 'base.html' %}
-{% load staticfiles %}
+{% load staticfiles i18n %}
 
-{% block title %}Категория "{{ categories|lower }}" &#187; IGRIK{% endblock %}
+{% block title %}{% trans "Category" %} "{{ categories|lower }}" &#187; IGRIK{% endblock %}
 
 {% block content %}
 <div class="article">
-  <h3 class="pad_bot no_margin">Категория: {{ categories|lower }}</h3>
+  <h3 class="pad_bot no_margin">{% trans "Category" %}: {{ categories|lower }}</h3>
     <ol class="ol_unstyled">
     {% if user.is_superuser %}
     {% for article in categories.category.all %}
         <li class="pad_bot">{{ article.article_datetime|date:"d-m-Y" }} | <a href="{% url "blog:article_detail" article.category.slug article.slug %}">{{ article.article_title }}</a></li>
     {% empty %}
-        <p>Скоро тут появится что-нибудь интересное!!!</p>
+        <p>{% trans "Soon there will be something interesting" %}!</p>
 	{% endfor %}
     
     {% else %}
@@ -19,7 +19,7 @@
     {% for article in categories.category.public_articles %}
         <li class="pad_bot">{{ article.article_datetime|date:"d-m-Y" }} | <a href="{% url "blog:article_detail" article.category.slug article.slug %}">{{ article.article_title }}</a></li>
     {% empty %}
-        <p>Скоро тут появится что-нибудь интересное!!!</p>
+        <p>{% trans "Soon there will be something interesting" %}!</p>
 	{% endfor %}
     {% endif %}
     </ol> 

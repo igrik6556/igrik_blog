@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
-{% load staticfiles %}
+{% load staticfiles i18n %}
 
-{% block title %}Удаление - {{ article.article_title }} - {{ article.category }} &#187; IGRIK{% endblock %}
+{% block title %}{% trans "Delete" %} - {{ article.article_title }} - {{ article.category }} &#187; IGRIK{% endblock %}
 
 {% block content %}
     <form action="" method="post">
-    <div>Вы действительно хотите удалить статью "{{ article.article_title }}"?</div>
+    <div>{% trans "Are you sure you want to delete" %} "{{ article.article_title }}"?</div>
     {% csrf_token %}
     {{ form.as_p }}
-    <input class="btn btn-primary" type="submit" value="Удалить">
+    <input class="btn btn-primary" type="submit" value="{% trans "Delete" %}">
 {% endblock %}

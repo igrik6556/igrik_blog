@@ -1,13 +1,15 @@
+{% load i18n %}
+
 <div id="side_archive">
  <div class="panel panel-default">
   <div class="panel-heading">
-      <h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapseFilterDates">Архив</a></h4>
+      <h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapseFilterDates">{% trans "Archive" %}</a></h4>
   </div>
 <div id="collapseFilterDates" class="panel-collapse collapse in">
   <div class="panel-body">
 {% if years|length > 0 %}	
 {% for y in years reversed %}
-    <ol class="ol_unstyled"><li><h5>{{ y|date:"Y" }} год</h5></li></ol>
+    <ol class="ol_unstyled"><li><h5>{{ y|date:"Y" }} {% trans "year" %}</h5></li></ol>
         <ul class="list-inline">
            {% for m in month %}
                 {% if m|date:"Y" == y|date:"Y" %}
@@ -17,7 +19,7 @@
         </ul>   
 {% endfor %}
 {% else %}
-    <div class="alert alert-info">Упс! Пока пусто...</div>
+    <div class="alert alert-info">{% trans "Coming soon" %}</div>
 {% endif %}
   </div>
 </div>

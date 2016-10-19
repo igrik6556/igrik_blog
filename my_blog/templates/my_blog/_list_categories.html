@@ -1,7 +1,9 @@
+{% load i18n %}
+
 <div id="categories">
  <div class="panel panel-default">
   <div class="panel-heading">
-<h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapseCategory">Категории</a></h4>
+<h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapseCategory">{% trans "Categories" %}</a></h4>
   </div>
 <div id="collapseCategory" class="panel-collapse collapse in">
   <div class="panel-body">
@@ -12,7 +14,7 @@
            {% endfor %}
       </ul>
      {% else %}
-      <div class="alert alert-info">Упс! Пока пусто...</div>
+      <div class="alert alert-info">{% trans "Coming soon" %}</div>
      {% endif %}
   </div>
 </div>

@@ -100,4 +100,4 @@ class Article(models.Model):
 
     @models.permalink
     def get_absolute_url(self):
-        return 'blog:article_fully', [self.category.cat_slug, self.slug]
+        return 'blog:article_fully', [self.category.slug, self.slug]

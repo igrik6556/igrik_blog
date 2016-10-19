@@ -1,19 +1,19 @@
 {% extends 'base.html' %}
-{% load staticfiles markdown_deux_tags %}
+{% load staticfiles markdown_deux_tags i18n %}
 
 {% block nav_menu %}
-          <li class="active"><a href="{% url "blog:articles_main" %}">Статьи</a>
-          <li><a href="{% url "blog:article_archive" %}">Архив статей</a>
-	 	  <li><a href="#">Об авторе</a>
+          <li class="active"><a href="{% url "blog:articles_main" %}">{% trans "Articles" %}</a>
+          <li><a href="{% url "blog:article_archive" %}">{% trans "Archive" %}</a>
+	 	  <li><a href="#">{% trans "Author" %}</a>
 {% endblock nav_menu %}
 
 {% block content %}
 {% for article in object_list %}
     <div class="article">
       <h2 class="no_margin"><a class="no_style_atitle" href="{% url "blog:article_detail" article.category.slug article.slug %}">{{ article.article_title }}</a>
-      {% if article.is_private %}<span class="label label-warning label-size">Private</span>{% endif %}</h2>
-      <p class="text-right">Категория: <a href="{% url "blog:category_list" article.category.slug %}">{{ article.category }}</a></p>
-      <h6 class="text-right" style="color: grey;">Дата публикации: {{ article.article_datetime }}</h6>
+      {% if article.is_private %}<span class="label label-warning label-size">{% trans "Private" %}</span>{% endif %}</h2>
+      <p class="text-right">{% trans "Category" %}: <a href="{% url "blog:category_list" article.category.slug %}">{{ article.category }}</a></p>
+      <h6 class="text-right" style="color: grey;">{% trans "Publication date" %}: {{ article.article_datetime }}</h6>
         <div class="media article_text">
         {% if article.article_image %}<img class="art_img media-object" src="{{ article.article_image.url }}" alt="image" width="200px" height="200px">
         {% endif %}
@@ -27,13 +27,13 @@
         </div>
 	 
         <div class="row">
-          <div class="col-sm-2"><a class="" href="{% url "blog:article_detail" article.category.slug article.slug %}">Полная версия &raquo;</a></div>
+          <div class="col-sm-2"><a href="{% url "blog:article_detail" article.category.slug article.slug %}">{% trans "Read more" %} &raquo;</a></div>
           {% if user.is_superuser %}
-            <div class="col-sm-offset-9 col-sm-1 text-right"><a href="{% url "blog:article_update" article.slug %}"> <img src="{% static "img/update_art.png" %}" width="25" height="25" alt="Редактировать"></a></div>
+            <div class="col-sm-offset-9 col-sm-1 text-right"><a href="{% url "blog:article_update" article.slug %}"> <img src="{% static "img/update_art.png" %}" width="25" height="25" alt="{% trans "Edit" %}"></a></div>
           {% endif %}
         </div>
     </div>	    
 {% empty %}
-    <div class="alert alert-info">Скоро тут появится кое-что интересное!</div>
+    <div class="alert alert-info">{% trans "Soon there will be something interesting" %}!</div>
 {% endfor %}
 {% endblock content %}

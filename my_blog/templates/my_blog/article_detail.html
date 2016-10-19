@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
-{% load staticfiles markdown_deux_tags %}
+{% load staticfiles markdown_deux_tags i18n %}
 
 {% block title %}{{ article.article_title }} &#187; IGRIK{% endblock %}
 
 {% block content %}
 		<div class="article">
 		<h2 class="no_margin">{{ article.article_title }}</h2>
-		<h5 class="text-right">Категория: <a href="{% url "blog:category_list" article.category.slug %}">{{ article.category }}</a></h5>
-        <h6 class="text-right">Дата публикации: {{ article.article_datetime }}</h6><hr>
+		<h5 class="text-right">{% trans "Category" %}: <a href="{% url "blog:category_list" article.category.slug %}">{{ article.category }}</a></h5>
+        <h6 class="text-right">{% trans "Publication date" %}: {{ article.article_datetime }}</h6><hr>
 		<div class="article_text">
         {{ article.article_text|markdown:"test"}}
         </div>
@@ -22,8 +22,8 @@
         
 	        {% if user.is_superuser %}
                <div class="col-sm-offset-5 col-sm-2 text-right">
-                <a style="padding-right:15px;" href="{% url "blog:article_update" article.slug %}"> <img src="{% static "img/update_art.png" %}" width="25" height="25" alt="Редактировать"></a>
-                <a href="{% url "blog:article_delete" article.slug %}"> <img src="{% static "img/del_art.png" %}" width="25" height="25" alt="Удалить"></a>
+                <a style="padding-right:15px;" href="{% url "blog:article_update" article.slug %}"> <img src="{% static "img/update_art.png" %}" width="25" height="25" alt="{% trans "Edit" %}"></a>
+                <a href="{% url "blog:article_delete" article.slug %}"> <img src="{% static "img/del_art.png" %}" width="25" height="25" alt="{% trans "Delete" %}"></a>
                </div>
             {% endif %}
         </div>

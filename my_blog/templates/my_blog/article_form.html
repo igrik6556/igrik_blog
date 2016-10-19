@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load staticfiles my_tags %}
+{% load staticfiles my_tags i18n %}
 
 {% block title %} {{ title|safe }} {% endblock %}
 {% block extends_styles %} {{ form.media }} {% endblock extends_styles %}
@@ -24,10 +24,11 @@
         {% if field.help_text %}
             <div class="help-block">{{ field.help_text }}</div>
         {% endif %}
-            {{ field }}</label>
+            {{ field }}
+        </label>
         </div>
     {% endfor %}
-    <div class="pad_bot"><input class="btn btn-primary" type="submit" value="Сохранить"></div>
+    <div class="pad_bot"><input class="btn btn-primary" type="submit" value="{% trans "Save" %}"></div>
   
 {% endblock %}
         

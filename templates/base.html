@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-{% load staticfiles my_tags %}
+{% load staticfiles my_tags i18n %}
 <html lang="ru">
     <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="author" content="igrik" />
         <meta name="keywords" content="Python, Django, блог, веб разработка" />
         <meta name="description" content="Блог веб разработчика Python/Django" />
         
-    	<title>{% block title %}Главная {% if page_obj.paginator.num_pages > 1 %}&#187; {{page_obj.number}} страница{% endif %} &#187; IGRIK{% endblock %}</title>
+    	<title>{% block title %}{% trans "Main" %} {% if page_obj.paginator.num_pages > 1 %}&#187; {{page_obj.number}} {% trans "page" %}{% endif %} &#187; IGRIK{% endblock %}</title>
         <link rel="shortcut icon" href="{% static "img/favicon.png" %}" type="image/png">
         {% block extends_styles %} {% endblock extends_styles %}
 		{% block styles %}
@@ -28,7 +28,7 @@
 {% block scroll_up %}
     <div class="up_btn">
 	    <div id="scroll_btn">
-	        <img alt="Прокрутить вверх" src="{% static "img/up2.png" %}" width="80%" height="40px"></img>	
+	        <img alt={% trans "Scroll up" %} src="{% static "img/up2.png" %}" width="80%" height="40px"></img>	
 	    </div>
     </div>
 {% endblock scroll_up %}
@@ -39,7 +39,7 @@
         <div class="navbar-header">
           <div class="navbar-brand"><a href="{% url "blog:articles_main" %}"><img src="{% static "img/logo7.png" %}" width="150" height="40" alt="Логотип"></a></div>
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".for_collapse">
-            <span class="sr-only">Выпадающее окно</span>
+            <span class="sr-only">{% trans "Drop-down window" %}</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -50,9 +50,9 @@
         
         <ul class="nav navbar-nav navbar-right">
          {% block nav_menu %}
-          <li><a href="{% url "blog:articles_main" %}">Статьи</a></li>
-          <li><a href="{% url "blog:article_archive" %}">Архив статей</a></li>
-          <li><a href="#">Об авторе</a></li>
+          <li><a href="{% url "blog:articles_main" %}">{% trans "Articles" %}</a></li>
+          <li><a href="{% url "blog:article_archive" %}">{% trans "Archive" %}</a></li>
+          <li><a href="#">{% trans "Author" %}</a></li>
          {% endblock nav_menu %}
         </ul>
         </div>
@@ -73,7 +73,7 @@
 <div class="col-sm-3">
   {% block findform %}
     <form class="navbar-form search-form" method="get" action="{% url 'haystack_search' %}">
-        <input type="text" class="form-control srch_form" name="q" placeholder="Что искать?">
+        <input type="text" class="form-control srch_form" name="q" placeholder="{% trans "Find" %}">
     </form>
   {% endblock findform %}
   <div class="panel-group" id="accordion">
@@ -82,8 +82,8 @@
     {% filter_dates user %}
   </div>
     {% if user.is_superuser %}
-	    <div class="pad_bot"><a class="btn btn-primary" href="{% url "blog:article_create" %}">Добавить статью</a></div>
-        <div class="pad_bot"><a class="btn btn-primary" href="/admin" target="_blank">Админка</a></div>
+	    <div class="pad_bot"><a class="btn btn-primary" href="{% url "blog:article_create" %}">{% trans "Add article" %}</a></div>
+        <div class="pad_bot"><a class="btn btn-primary" href="/admin" target="_blank">{% trans "Admin center" %}</a></div>
     {% endif %}
 </div>
 {% endblock sidebar %}  
