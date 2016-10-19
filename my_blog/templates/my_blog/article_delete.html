@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}Удаление - {{ article.article_title }} - {{ article.category }} &#187; IGRIK{% endblock %}
+
+{% block content %}
+    <form action="" method="post">
+    <div>Вы действительно хотите удалить статью "{{ article.article_title }}"?</div>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input class="btn btn-primary" type="submit" value="Удалить">
+{% endblock %}

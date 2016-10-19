@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load my_tags %}
+
+{% block title %}Архив статей ({{archive_month.0.article_datetime|date:"F Y"|lower}}) &#187; IGRIK{% endblock %}
+
+{% block content %}    
+<div class="article">
+    <h3 class="pad_bot no_margin">Архив статей <span style="font-size: 12px;">({{ archive_month.0.article_datetime|date:"F Y"|lower }}):</span></h3>
+    <ol class="ol_unstyled">
+    {% for article in archive_month %}
+		<li class="pad_bot">{{ article.article_datetime|date:"d-m-Y" }} | <a href="{% url "blog:article_detail" article.category.slug article.slug %}">{{ article.article_title }}</a></li>
+	{% endfor %}
+    </ol>
+</div>
+{% endblock %}

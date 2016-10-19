@@ -1,0 +1,20 @@
+<div id="last_article">
+ <div class="panel panel-default">
+  <div class="panel-heading">
+<h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapseLastArticles">Последние статьи</a></h4>
+  </div>
+ <div id="collapseLastArticles" class="panel-collapse collapse in">
+  <div class="panel-body">
+    {% if last_articles|length > 0 %}	
+    <ul>
+	    {% for article in last_articles %}
+	    <li><a href="{% url "blog:article_detail" article.category.slug article.slug %}">{{ article.article_title }}</a></li>
+		{% endfor %}
+	</ul>
+    {% else %}
+      <div class="alert alert-info">Упс! Пока пусто...</div>
+    {% endif %}
+  </div>
+</div>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+<div id="side_archive">
+ <div class="panel panel-default">
+  <div class="panel-heading">
+      <h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapseFilterDates">Архив</a></h4>
+  </div>
+<div id="collapseFilterDates" class="panel-collapse collapse in">
+  <div class="panel-body">
+{% if years|length > 0 %}	
+{% for y in years reversed %}
+    <ol class="ol_unstyled"><li><h5>{{ y|date:"Y" }} год</h5></li></ol>
+        <ul class="list-inline">
+           {% for m in month %}
+                {% if m|date:"Y" == y|date:"Y" %}
+                <li><a href="{% url "blog:article_month" y|date:"Y" m|date:"m" %}">{{ m|date:"F" }}</a></li>
+                {% endif %}
+           {% endfor %}
+        </ul>   
+{% endfor %}
+{% else %}
+    <div class="alert alert-info">Упс! Пока пусто...</div>
+{% endif %}
+  </div>
+</div>
+  </div>
+</div>

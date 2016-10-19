@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+{% load staticfiles my_tags %}
+<html lang="ru">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="author" content="igrik" />
+        <meta name="keywords" content="Python, Django, блог, веб разработка" />
+        <meta name="description" content="Блог веб разработчика Python/Django" />
+        
+    	<title>{% block title %}Главная {% if page_obj.paginator.num_pages > 1 %}&#187; {{page_obj.number}} страница{% endif %} &#187; IGRIK{% endblock %}</title>
+        <link rel="shortcut icon" href="{% static "img/favicon.png" %}" type="image/png">
+        {% block extends_styles %} {% endblock extends_styles %}
+		{% block styles %}
+    	<link rel="stylesheet" type="text/css" href="{% static "css/bootstrap.min.css" %}">
+    	<link rel="stylesheet" type="text/css" href="{% static "css/main.css" %}">
+        <link rel="stylesheet" type="text/css" href="{% static "syntax/styles/github.css" %}">
+        <script type="text/javascript" src="{% static "js/jquery.min.js" %}"></script>
+        <script type="text/javascript" src="{% static "js/scripts.js" %}"></script>
+        <script type="text/javascript" src="{% static "js/bootstrap.min.js" %}"></script>
+        <script type="text/javascript" src="{% static "syntax/highlight.pack.js" %}"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+		{% endblock styles %}
+    </head>
+  
+<body>
+{% block scroll_up %}
+    <div class="up_btn">
+	    <div id="scroll_btn">
+	        <img alt="Прокрутить вверх" src="{% static "img/up2.png" %}" width="80%" height="40px"></img>	
+	    </div>
+    </div>
+{% endblock scroll_up %}
+
+{% block header %}
+    <div class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <div class="navbar-brand"><a href="{% url "blog:articles_main" %}"><img src="{% static "img/logo7.png" %}" width="150" height="40" alt="Логотип"></a></div>
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".for_collapse">
+            <span class="sr-only">Выпадающее окно</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>  
+        </div>
+
+        <div class="for_collapse navbar-collapse collapse" style="padding-right: 0">
+        
+        <ul class="nav navbar-nav navbar-right">
+         {% block nav_menu %}
+          <li><a href="{% url "blog:articles_main" %}">Статьи</a></li>
+          <li><a href="{% url "blog:article_archive" %}">Архив статей</a></li>
+          <li><a href="#">Об авторе</a></li>
+         {% endblock nav_menu %}
+        </ul>
+        </div>
+      </div>
+    </div>
+{% endblock header %}
+
+{% block allcontent %}
+<div class="container">
+  <div class="row">
+    <div class="col-sm-9">
+{% include "generic/messages.html" %}
+{% block content %}
+{% endblock content %}
+    </div>
+
+{% block sidebar %}
+<div class="col-sm-3">
+  {% block findform %}
+    <form class="navbar-form search-form" method="get" action="{% url 'haystack_search' %}">
+        <input type="text" class="form-control srch_form" name="q" placeholder="Что искать?">
+    </form>
+  {% endblock findform %}
+  <div class="panel-group" id="accordion">
+    {% list_categories user %}
+    {% last_articles user %}
+    {% filter_dates user %}
+  </div>
+    {% if user.is_superuser %}
+	    <div class="pad_bot"><a class="btn btn-primary" href="{% url "blog:article_create" %}">Добавить статью</a></div>
+        <div class="pad_bot"><a class="btn btn-primary" href="/admin" target="_blank">Админка</a></div>
+    {% endif %}
+</div>
+{% endblock sidebar %}  
+  </div>
+</div>  
+{% endblock allcontent %}
+       
+{% block pagination %}
+{% if page_obj.paginator.num_pages > 1 %}
+	<div class="container">
+       <div class="row">
+         <div class="col-sm-9 text-center">
+        <ul class="pagination">
+        {% if page_obj.has_previous %}
+            <li><a href="{% url "blog:articles_main" page_obj.previous_page_number %}">&laquo;</a></li>
+        {% else %}
+            <li class="disabled"><span>&laquo;</span></li>
+        {% endif %}
+        
+        {% for page in page_obj.pages %}
+        {% if page %}
+            {% ifequal page page_obj.number %}
+            <li class="active"><span>{{ page }}</span></li>
+            {% else %}
+            <li><a href="{% url "blog:articles_main" page %}">{{ page }}</a></li>
+            {% endifequal %}
+        {% else %}
+            <li class="disabled"><span>...</span></li>
+        {% endif %}
+        {% endfor %}
+        
+        {% if page_obj.has_next %}
+            <li><a href="{% url "blog:articles_main" page_obj.next_page_number %}">&raquo;</a></li>
+        {% else %}
+            <li class="disabled"><span>&raquo;</span></li>        
+        {% endif %}
+        </ul>
+         </div>
+        </div>
+    </div>
+    {% endif %}
+{% endblock pagination %}
+<hr class="no_margin">
+{% block footer %}
+    <div class="container">
+	    <div class="row">
+            <div class="col-sm-9">Copyright © <a href="#">igrik</a>, 2016 
+            <span class="pull-right">Powered by <img src="{% static "img/pydj_logo.png" %}" alt="python/django" width="50px" height="20px"></span>
+            </div>
+		</div>
+    </div>
+{% endblock footer %}
+
+</body>
+</html>

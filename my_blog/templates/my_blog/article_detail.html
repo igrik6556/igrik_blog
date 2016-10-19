@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load staticfiles markdown_deux_tags %}
+
+{% block title %}{{ article.article_title }} &#187; IGRIK{% endblock %}
+
+{% block content %}
+		<div class="article">
+		<h2 class="no_margin">{{ article.article_title }}</h2>
+		<h5 class="text-right">Категория: <a href="{% url "blog:category_list" article.category.slug %}">{{ article.category }}</a></h5>
+        <h6 class="text-right">Дата публикации: {{ article.article_datetime }}</h6><hr>
+		<div class="article_text">
+        {{ article.article_text|markdown:"test"}}
+        </div>
+        <hr>
+
+        <div class="row" style="padding: 0 0 10px 0;">
+        <div class="col-sm-5">
+        <script type="text/javascript" src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js" charset="utf-8"></script>
+        <script type="text/javascript" src="//yastatic.net/share2/share.js" charset="utf-8"></script>
+        <div class="ya-share2" data-services="vkontakte,facebook,odnoklassniki,moimir,gplus,twitter,lj"></div>
+        </div>
+        
+	        {% if user.is_superuser %}
+               <div class="col-sm-offset-5 col-sm-2 text-right">
+                <a style="padding-right:15px;" href="{% url "blog:article_update" article.slug %}"> <img src="{% static "img/update_art.png" %}" width="25" height="25" alt="Редактировать"></a>
+                <a href="{% url "blog:article_delete" article.slug %}"> <img src="{% static "img/del_art.png" %}" width="25" height="25" alt="Удалить"></a>
+               </div>
+            {% endif %}
+        </div>
+
+            <div class="row"> 
+                {% if previous_article %}
+                {% if previous_article.slug != article.slug %}
+                <div class="col-sm-6"><a href="{% url "blog:article_detail" previous_article.category.slug previous_article.slug %}">&laquo;&laquo;&laquo; {{ previous_article }}</a></div>
+                {% endif %}
+                {% endif %}
+                
+                {% if next_article %}
+                {% if next_article.slug != article.slug %}
+                <div class="col-sm-6"><a href="{% url "blog:article_detail" next_article.category.slug next_article.slug %}">&raquo;&raquo;&raquo; {{ next_article }}</a></div>
+                {% endif %}
+                {% endif %}
+            </div> 
+        </div>
+{% endblock %}
+

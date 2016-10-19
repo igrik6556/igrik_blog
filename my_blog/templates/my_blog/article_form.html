@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load staticfiles my_tags %}
+
+{% block title %} {{ title|safe }} {% endblock %}
+{% block extends_styles %} {{ form.media }} {% endblock extends_styles %}
+{% block content %}
+
+<form action="" method="post" {% if form.is_multipart %} enctype="multipart/form-data"{% endif %}>
+    {% csrf_token %}
+    {% for field in form.hidden_fields %}
+        {{ field }}
+    {% endfor %}
+    {% for field in form.visible_fields %}
+        <div class="form-group">
+        {% if field.errors|length > 0 %}
+          <div class="has-error checkbox">
+            {% for error in field.errors %}
+              <strong>{{ error }}</strong>
+            {% endfor %}
+          </div>
+        {% endif %}    
+
+        <label>{{ field.label }}:
+        {% if field.help_text %}
+            <div class="help-block">{{ field.help_text }}</div>
+        {% endif %}
+            {{ field }}</label>
+        </div>
+    {% endfor %}
+    <div class="pad_bot"><input class="btn btn-primary" type="submit" value="Сохранить"></div>
+  
+{% endblock %}
+        
+{% block findform %}
+{% endblock findform %}

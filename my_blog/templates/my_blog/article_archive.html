@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load staticfiles my_tags %}
+
+{% block title %}Архив статей &#187; IGRIK{% endblock %}
+
+{% block nav_menu %}
+          <li><a href="{% url "blog:articles_main" %}">Статьи</a>
+          <li class="active"><a href="{% url "blog:article_archive" %}">Архив статей</a>
+	 	  <li><a href="#">Об авторе</a>
+{% endblock nav_menu %}
+
+{% block content %}
+   
+<div class="article">
+    <h3 class="pad_bot no_margin">Архив статей:</h3>
+{% if articles_archive|length > 0 %}	    
+    <ol class="ol_unstyled">
+    {% for article in articles_archive %}
+		<li class="pad_bot">{{ article.article_datetime|date:"d-m-Y" }} | <a href="{% url "blog:article_detail" article.category.slug article.slug %}">
+		{{ article.article_title }}</a></li>
+	{% endfor %}
+	</ol>
+{% else %}
+    <div class="alert alert-info">Скоро тут появится кое-что интересное!</div>
+{% endif %}
+</div>
+{% endblock %}
