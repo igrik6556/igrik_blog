@@ -87,6 +87,10 @@ label {
     display: inherit;
 }
 
+h1 {
+    font-size: 30px;
+    margin-top: 0;
+}
 /* --------------------------- My styles -------------------------- */
 
 .article {
@@ -105,7 +109,7 @@ label {
     overflow: hidden;
 }
 
-div.article_text{
+div.article_text {
     font-size: 16px;
 }
 
@@ -179,6 +183,24 @@ img.art_img {
     font-size: 50%;
     vertical-align: middle;
     background-color: #989898;
+}
+
+.image-about {
+    float: left;
+    margin-right: 20px;
+    height: 230px;
+    width: 230px;
+}
+
+.pad-right {
+    margin: 0 240px;
+
+}
+
+.social-but {
+    margin-bottom: 10px;
+    padding-right: 0;
+    text-align: right;
 }
 /*-------------------- Share social buttons -------------*/
 .ya-share2 {

@@ -1,7 +1,48 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
+{% load staticfiles i18n %}
 
-{% block content %}
-{% endblock %}
+{% block title %}
+{% trans "About author"%} &#187; IGRIK
+{% endblock title %}
+
+{% block scroll_up %}
+{% endblock scroll_up %}
+
+{% block nav_menu %}
+ <li><a href="{% url "blog:articles_main" %}">{% trans "Articles" %}</a></li>
+ <li><a href="{% url "blog:article_archive" %}">{% trans "Archive" %}</a></li>
+ <li class="active"><a href="{% url "about" %}">{% trans "Author" %}</a></li>
+{% endblock nav_menu %}
+
+{% block allcontent %}
+<div class="container">
+  <div class="row">
+    <div class="col-sm-9">
+      <h1>Igrik - Python/Django {% trans "developer" %}</h1>
+    </div>
+    <div class="col-sm-3 social-but">
+      <a href="https://vk.com/ihor.pyvovarov" target="_blank"><img src="/static/img/vk.png" alt="Vkontakte"></a>
+      <a href="https://www.facebook.com/ihor.pyvovarov" target="_blank"><img src="/static/img/facebook.png" alt="Facebook"></a>
+      <a href="https://www.linkedin.com/in/ihor-pyvovarov-90138912a" target="_blank"><img src="/static/img/linkedin.png" alt="Vkontakte"></a>
+      <a href="https://github.com/igrik6556" target="_blank"><img src="/static/img/git.png" alt="GitHub"></a>
+    </div>
+    <div class="col-sm-9">
+      <img class="image-about" src="/static/img/foto_self.jpg" alt="Igrik Foto">
+      <p>Приветствую Вас на моем блоге!</p>
+      <p>Меня зовут Игорь, родился в 1990 году, живу в Украине.</p>
+      <p>Закончил институт по специальности "Электромеханические системы автоматизации и электропривод" и сейчас работаю программистом автоматизированных систем управления технологическими процессами. Примерно с ноября 2015 года заинтересовался web программированием и познакомился с языком программирования <strong>python</strong> и его фреймворком <strong>django</strong>.</p>
+      <p>Здесь я буду публиковать статьи о разных вещах, с которыми я столкнулся в процессе обучения, а также собирать информацию, которая оказалась мне полезна и интересна. Если вас заинтересовала какая-то из тем, буду рад обсудить.</p>    
+    </div>
+    <div class="col-sm-12">
+      Написать <a href="mailto:igrikblog@gmail.com">письмо</a><br>
+      Skype: <a href="skype:walinor6556">walinor6556</a>
+    </div>
+  </div>
+</div>
+{% endblock allcontent %}
 
 {% block sidebar %}
-{% endblock %}
+{% endblock sidebar %}
+
+{% block footer %}
+{% endblock footer %}

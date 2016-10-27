@@ -4,7 +4,7 @@
 {% block nav_menu %}
           <li class="active"><a href="{% url "blog:articles_main" %}">{% trans "Articles" %}</a>
           <li><a href="{% url "blog:article_archive" %}">{% trans "Archive" %}</a>
-	 	  <li><a href="#">{% trans "Author" %}</a>
+	 	  <li><a href="{% url "about" %}">{% trans "Author" %}</a>
 {% endblock nav_menu %}
 
 {% block content %}

@@ -35,6 +35,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'django.contrib.flatpages',
     'my_blog',
 
     'pagedown',
@@ -105,6 +107,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+SITE_ID = 1
+SITE_URL = 'http://igrik.pythonanywhere.com/'
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
