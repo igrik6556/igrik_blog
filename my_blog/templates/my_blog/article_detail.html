@@ -19,7 +19,7 @@
         <script type="text/javascript" src="//yastatic.net/share2/share.js" charset="utf-8"></script>
         <div class="ya-share2" data-services="vkontakte,facebook,odnoklassniki,moimir,gplus,twitter,lj"></div>
         </div>
-        
+    
 	        {% if user.is_superuser %}
                <div class="col-sm-offset-5 col-sm-2 text-right">
                 <a style="padding-right:15px;" href="{% url "blog:article_update" article.slug %}"> <img src="{% static "img/update_art.png" %}" width="25" height="25" alt="{% trans "Edit" %}"></a>
@@ -40,7 +40,21 @@
                 <div class="col-sm-6"><a href="{% url "blog:article_detail" next_article.category.slug next_article.slug %}">&raquo;&raquo;&raquo; {{ next_article }}</a></div>
                 {% endif %}
                 {% endif %}
-            </div> 
+            </div>
         </div>
+<div id="disqus_thread"></div>
+<script>
+var disqus_config = function () {
+this.page.url = window.location.href;  
+this.page.identifier = window.location.pathname;
+};
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = '//igrik-pythonanywhere-com.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>   
 {% endblock %}
 

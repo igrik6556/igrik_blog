@@ -62,9 +62,9 @@ class ArticleCreate(SuccessMessageMixin, CreateView):
     success_message = _("Article <%(article_title)s> successfully added!")
 
     def get_success_url(self):
-        self.success_url = reverse("blog:article_fully",
+        self.success_url = reverse("blog:article_detail",
                                    kwargs={
-                                       "cat_slug": self.object.category.cat_slug,
+                                       "cat_slug": self.object.category.slug,
                                        "slug": self.object.slug
                                    })
         return self.success_url
@@ -82,9 +82,9 @@ class ArticleUpdate(SuccessMessageMixin, UpdateView):
     success_message = _("Article <%(article_title)s> successfully updated after editing!")
 
     def get_success_url(self):
-        self.success_url = reverse("blog:article_fully",
+        self.success_url = reverse("blog:article_detail",
                                    kwargs={
-                                       "cat_slug": self.object.category.cat_slug,
+                                       "cat_slug": self.object.category.slug,
                                        "slug": self.object.slug
                                    })
         return self.success_url
