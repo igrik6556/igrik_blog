@@ -25,11 +25,14 @@
             {% endif %}            
            </div>
         </div>
-	 
+
         <div class="row">
           <div class="col-sm-2"><a href="{% url "blog:article_detail" article.category.slug article.slug %}">{% trans "Read more" %} &raquo;</a></div>
+          <div class="col-sm-offset-8 col-sm-2 text-right">
+            {% trans "Comments" %}: <span class="disqus-comment-count" data-disqus-url={% if request.is_secure %}https://{% else %}http://{% endif %}{{request.META.HTTP_HOST}}{{article.get_absolute_url}}>num</span>
+          </div>
           {% if user.is_superuser %}
-            <div class="col-sm-offset-9 col-sm-1 text-right"><a href="{% url "blog:article_update" article.slug %}"> <img src="{% static "img/update_art.png" %}" width="25" height="25" alt="{% trans "Edit" %}"></a></div>
+            <div class="col-sm-offset-11 col-sm-1 text-right"><a href="{% url "blog:article_update" article.slug %}"> <img src="{% static "img/update_art.png" %}" width="25" height="25" alt="{% trans "Edit" %}"></a></div>
           {% endif %}
         </div>
     </div>	    
