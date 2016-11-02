@@ -10,7 +10,6 @@ from django.contrib.flatpages import views
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^search/', include('haystack.urls')),
     url(r'^about/$', views.flatpage, {'url': '/about/'}, name="about"),
     url(r'^', include('my_blog.urls', namespace="blog")),
 ]

@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'pagedown',
     'markdown_deux',
     'pure_pagination',
-    'haystack',
     'oembed',
 ]
 
@@ -135,17 +134,6 @@ PAGINATION_SETTINGS = {
     'MARGIN_PAGES_DISPLAYED': 2,
     'SHOW_FIRST_PAGE_WHEN_INVALID': False,
 }
-
-HAYSTACK_CONNECTIONS = {
-    'default': {
-        'ENGINE': 'haystack.backends.solr_backend.SolrEngine',
-        'URL': 'http://127.0.0.1:8983/solr',
-        'INCLUDE_SPELLING': False,
-        'TIMEOUT': 30,
-    }
-}
-HAYSTACK_SEARCH_RESULTS_PER_PAGE = 50
-HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
 
 try:
     from local_settings import *

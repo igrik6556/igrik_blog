@@ -9,7 +9,7 @@
 		<h5 class="text-right">{% trans "Category" %}: <a href="{% url "blog:category_list" article.category.slug %}">{{ article.category }}</a></h5>
         <h6 class="text-right">{% trans "Publication date" %}: {{ article.article_datetime }}</h6><hr>
 		<div class="article_text">
-        {{ article.article_text|markdown:"test"}}
+        {{ article.article_text|markdown }}
         </div>
         <hr>
 

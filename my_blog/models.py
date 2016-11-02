@@ -3,7 +3,6 @@ from django.db import models
 from django.utils import timezone
 from django.core.exceptions import ObjectDoesNotExist
 from uuslug import slugify
-from django.core.urlresolvers import reverse
 
 from django.utils.translation import ugettext as _
 

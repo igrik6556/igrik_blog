@@ -71,11 +71,6 @@
 
 {% block sidebar %}
 <div class="col-sm-3">
-  {% block findform %}
-    <form class="navbar-form search-form" method="get" action="{% url 'haystack_search' %}">
-        <input type="text" class="form-control srch_form" name="q" placeholder="{% trans "Find" %}">
-    </form>
-  {% endblock findform %}
   <div class="panel-group" id="accordion">
     {% list_categories user %}
     {% last_articles user %}

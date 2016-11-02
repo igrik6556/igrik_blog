@@ -156,23 +156,9 @@ label .inp_form{
     margin-top: 6px;
 }
 
-p {
-    text-align: justify;
-}
-
 img.art_img {
     float: left;
     margin: 0 10px 5px 0;
-}
-
-.search-form {
-	padding: 0;
-	margin-top: 0;
-}
-
-.navbar-form .srch_form {
-    border: 1px solid #428bca;
-	width: 100%;
 }
 
 .img_inp {
@@ -201,6 +187,15 @@ img.art_img {
     margin-bottom: 10px;
     padding-right: 0;
     text-align: right;
+}
+
+img {
+    max-width: 100%;
+}
+
+p img {
+    display: block;
+    margin: 0 auto;
 }
 /*-------------------- Share social buttons -------------*/
 .ya-share2 {
@@ -243,4 +238,9 @@ code.hljs {
 #scroll_btn img{
 	cursor: pointer;
     display: none;
+}
+
+.test360 {
+    width: 360px;
+    height: 360px;
 }
