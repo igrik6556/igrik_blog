@@ -105,7 +105,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-SITE_ID = 1
+SITE_ID = 2
 SITE_URL = 'http://igrik.pythonanywhere.com/'
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
@@ -115,6 +115,10 @@ TIME_ZONE = 'Europe/Kiev'
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
+
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, 'my_blog/locale'),
+)
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
