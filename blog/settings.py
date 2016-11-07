@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'pagedown',
     'markdown_deux',
     'pure_pagination',
-    'oembed',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -126,8 +125,8 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'static/uploads')
-MEDIA_URL = '/static/uploads/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 
 PAGINATION_SETTINGS = {
     'PAGE_RANGE_DISPLAYED': 6,

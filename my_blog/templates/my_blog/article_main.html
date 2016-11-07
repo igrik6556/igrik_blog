@@ -15,14 +15,14 @@
       <p class="text-right">{% trans "Category" %}: <a href="{% url "blog:category_list" article.category.slug %}">{{ article.category }}</a></p>
       <h6 class="text-right" style="color: grey;">{% trans "Publication date" %}: {{ article.article_datetime }}</h6>
         <div class="media article_text">
-        {% if article.article_image %}<img class="art_img media-object" src="{{ article.article_image.url }}" alt="image" width="200px" height="200px">
+        {% if article.article_image %}<img class="art_img media-object" src="{{ article.article_image.url }}" alt="{% trans "Article logo" %} {{ article.article_title }}">
         {% endif %}
           <div class="media-body">
             {% if article.article_text|length > 500 %}
               {{ article.article_text|truncatewords_html:50|markdown }}
             {% else %}
               {{ article.article_text|markdown }}
-            {% endif %}            
+            {% endif %}
            </div>
         </div>
 
@@ -32,7 +32,7 @@
             {% trans "Comments" %}: <span class="disqus-comment-count" data-disqus-url={% if request.is_secure %}https://{% else %}http://{% endif %}{{request.META.HTTP_HOST}}{{article.get_absolute_url}}>num</span>
           </div>
           {% if user.is_superuser %}
-            <div class="col-sm-offset-11 col-sm-1 text-right"><a href="{% url "blog:article_update" article.slug %}"> <img src="{% static "img/update_art.png" %}" width="25" height="25" alt="{% trans "Edit" %}"></a></div>
+            <div class="col-sm-offset-11 col-sm-1 text-right"><a href="{% url "blog:article_update" article.slug %}"> <img class="icon" src="{% static "img/update_art.png" %}" alt="{% trans "Edit" %}"></a></div>
           {% endif %}
         </div>
     </div>	    

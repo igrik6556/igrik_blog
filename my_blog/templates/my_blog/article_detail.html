@@ -22,8 +22,8 @@
     
 	        {% if user.is_superuser %}
                <div class="col-sm-offset-5 col-sm-2 text-right">
-                <a style="padding-right:15px;" href="{% url "blog:article_update" article.slug %}"> <img src="{% static "img/update_art.png" %}" width="25" height="25" alt="{% trans "Edit" %}"></a>
-                <a href="{% url "blog:article_delete" article.slug %}"> <img src="{% static "img/del_art.png" %}" width="25" height="25" alt="{% trans "Delete" %}"></a>
+                <a style="padding-right:15px;" href="{% url "blog:article_update" article.slug %}"> <img class="icon" src="{% static "img/update_art.png" %}" alt="{% trans "Edit" %}"></a>
+                <a href="{% url "blog:article_delete" article.slug %}"> <img class="icon" src="{% static "img/del_art.png" %}" alt="{% trans "Delete" %}"></a>
                </div>
             {% endif %}
         </div>

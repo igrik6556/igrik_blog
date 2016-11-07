@@ -2,6 +2,7 @@
 from django.db import models
 from django.utils import timezone
 from django.core.exceptions import ObjectDoesNotExist
+from django.core.urlresolvers import reverse
 from uuslug import slugify
 
 from django.utils.translation import ugettext as _
@@ -29,9 +30,8 @@ class Categories(models.Model):
         self.slug = slugify(self.name)
         super(Categories, self).save()
 
-    @models.permalink
     def get_absolute_url(self):
-        return 'blog:category_list', [self.slug]
+        return reverse('blog:category_list', kwargs={'cat_slug': self.slug})
 
 
 class Article(models.Model):
@@ -102,6 +102,5 @@ class Article(models.Model):
         self.article_image.delete(save=False)
         super(Article, self).delete(*args, **kwargs)
 
-    @models.permalink
     def get_absolute_url(self):
-        return 'blog:article_detail', [self.category.slug, self.slug]
+        return reverse('blog:article_detail', kwargs={'cat_slug': self.category.slug, 'slug': self.slug})

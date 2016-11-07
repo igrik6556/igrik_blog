@@ -6,7 +6,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="author" content="igrik" />
-        <meta name="keywords" content="Python, Django, блог, веб разработка" />
+        <meta name="keywords" content="Python, Django, блог, веб разработка, web" />
         <meta name="description" content="Блог веб разработчика Python/Django" />
         
     	<title>{% block title %}{% trans "Main" %} {% if page_obj.paginator.num_pages > 1 %}&#187; {{page_obj.number}} {% trans "page" %}{% endif %} &#187; IGRIK{% endblock %}</title>
@@ -28,7 +28,7 @@
 {% block scroll_up %}
     <div class="up_btn">
 	    <div id="scroll_btn">
-	        <img alt={% trans "Scroll up" %} src="{% static "img/up2.png" %}" alt="{% trans "Scroll up" %}" width="80%" height="40">	
+	        <img class="scroll" alt={% trans "Scroll up" %} src="{% static "img/up2.png" %}">	
 	    </div>
     </div>
 {% endblock scroll_up %}
@@ -37,7 +37,7 @@
     <div class="navbar navbar-default">
       <div class="container">
         <div class="navbar-header">
-          <div class="navbar-brand"><a href="{% url "blog:articles_main" %}"><img src="{% static "img/logo7.png" %}" width="150" height="40" alt="{% trans "Site logo" %}"></a></div>
+          <div class="navbar-brand"><a href="{% url "blog:articles_main" %}"><img class="site-logo" src="{% static "img/logo7.png" %}" alt="{% trans "Site logo" %}"></a></div>
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".for_collapse">
             <span class="sr-only">{% trans "Drop-down window" %}</span>
             <span class="icon-bar"></span>
@@ -78,7 +78,7 @@
   </div>
     {% if user.is_superuser %}
 	    <div class="pad_bot"><a class="btn btn-primary" href="{% url "blog:article_create" %}">{% trans "Add article" %}</a></div>
-        <div class="pad_bot"><a class="btn btn-primary" href="/admin" target="_blank">{% trans "Admin center" %}</a></div>
+        <div class="pad_bot"><a class="btn btn-primary" href="{% url "admin:index" %}" target="_blank">{% trans "Admin center" %}</a></div>
     {% endif %}
 </div>
 {% endblock sidebar %}  
@@ -127,7 +127,7 @@
     <div class="container">
 	    <div class="row">
             <div class="col-sm-12">{% trans "Copyright" %} &copy; <a href="{% url "about" %}">igrik</a>, 2016 
-            <span class="pull-right">{% trans "Powered by" %} <img src="{% static "img/pydj_logo.png" %}" alt="python/django" width="50" height="20"></span>
+            <span class="pull-right">{% trans "Powered by" %} <img class="py-dj" src="{% static "img/pydj_logo.png" %}" alt="python/django"></span>
             </div>
 		</div>
     </div>

@@ -1,5 +1,4 @@
 /* Override Bootstrap's default styles */
-
 .navbar-brand {
     padding: 5px 15px;
 }
@@ -159,6 +158,8 @@ label .inp_form{
 img.art_img {
     float: left;
     margin: 0 10px 5px 0;
+    width: 200px;
+    height: 200px;
 }
 
 .img_inp {
@@ -171,7 +172,7 @@ img.art_img {
     background-color: #989898;
 }
 
-.image-about {
+img.image-about {
     float: left;
     margin-right: 20px;
     height: 230px;
@@ -196,6 +197,26 @@ img {
 p img {
     display: block;
     margin: 0 auto;
+}
+
+img.scroll {
+    width: 80%;
+    height: 40px;
+}
+
+img.site-logo {
+    width: 150px;
+    height: 40px;
+}
+
+img.py-dj {
+    width: 50px;
+    height: 20px;
+}
+
+img.icon {
+    width: 25px;
+    height: 25px;
 }
 /*-------------------- Share social buttons -------------*/
 .ya-share2 {
