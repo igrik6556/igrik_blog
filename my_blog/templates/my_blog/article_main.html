@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load staticfiles markdown_deux_tags i18n %}
+{% load staticfiles markdown_deux_tags i18n thumbnail %}
 
 {% block nav_menu %}
           <li class="active"><a href="{% url "blog:articles_main" %}">{% trans "Articles" %}</a>
@@ -15,7 +15,8 @@
       <p class="text-right">{% trans "Category" %}: <a href="{% url "blog:category_list" article.category.slug %}">{{ article.category }}</a></p>
       <h6 class="text-right" style="color: grey;">{% trans "Publication date" %}: {{ article.article_datetime }}</h6>
         <div class="media article_text">
-        {% if article.article_image %}<img class="art_img media-object" src="{{ article.article_image.url }}" alt="{% trans "Article logo" %} {{ article.article_title }}">
+        {% if article.article_image %}
+        <img class="art_img media-object" src="{{ article.get_img_300x.url }}" alt="{% trans "Article logo" %} {{ article.article_title }}">
         {% endif %}
           <div class="media-body">
             {% if article.article_text|length > 500 %}

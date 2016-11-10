@@ -6,7 +6,7 @@ from pagedown.widgets import AdminPagedownWidget
 
 
 class ArticleAdmin(admin.ModelAdmin):
-    list_display = ('article_title', 'category', 'article_datetime', 'slug', 'is_private',)
+    list_display = ('article_title', 'category', 'article_datetime', 'slug', 'is_private')
     list_filter = ('category', 'is_private', )
     date_hierarchy = 'article_datetime'
     search_fields = ['article_title', ]

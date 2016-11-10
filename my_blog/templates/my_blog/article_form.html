@@ -20,12 +20,11 @@
           </div>
         {% endif %}
 
-        <label>{{ field.label }}:
+        {{ field.label_tag }}
         {% if field.help_text %}
             <div class="help-block">{{ field.help_text }}</div>
         {% endif %}
             {{ field }}
-        </label>
         </div>
     {% endfor %}
     <div class="pad_bot"><input class="btn btn-primary" type="submit" value="{% trans "Save" %}"></div>

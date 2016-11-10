@@ -4,6 +4,7 @@ from django.utils import timezone
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.urlresolvers import reverse
 from uuslug import slugify
+from sorl.thumbnail import get_thumbnail, delete
 
 from django.utils.translation import ugettext as _
 
@@ -55,8 +56,7 @@ class Article(models.Model):
         _("Image article"),
         upload_to="art_image",
         blank=True,
-        null=True,
-        default=""
+        null=True
     )
     category = models.ForeignKey(
         Categories,
@@ -101,6 +101,9 @@ class Article(models.Model):
     def delete(self, *args, **kwargs):
         self.article_image.delete(save=False)
         super(Article, self).delete(*args, **kwargs)
+
+    def get_img_300x(self):
+        return get_thumbnail(self.article_image, '300', crop='center', quality=99)
 
     def get_absolute_url(self):
         return reverse('blog:article_detail', kwargs={'cat_slug': self.category.slug, 'slug': self.slug})
