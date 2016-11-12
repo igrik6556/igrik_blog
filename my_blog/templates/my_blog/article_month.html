@@ -5,7 +5,7 @@
 
 {% block content %}    
 <div class="article">
-    <h3 class="pad_bot no_margin">{% trans "Articles archive" %} <span style="font-size: 12px;">({{ archive_month.0.article_datetime|date:"F Y"|lower }}):</span></h3>
+    <h3 class="pad_bot no_margin">{% trans "Articles archive" %} <span class="font-s12">({{ archive_month.0.article_datetime|date:"F Y"|lower }}):</span></h3>
     <ol class="ol_unstyled">
     {% for article in archive_month %}
 		<li class="pad_bot">{{ article.article_datetime|date:"d-m-Y" }} | <a href="{% url "blog:article_detail" article.category.slug article.slug %}">{{ article.article_title }}</a></li>

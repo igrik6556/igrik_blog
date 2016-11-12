@@ -1,0 +1,34 @@
+[
+{
+    "model": "sites.site",
+    "pk": 1,
+    "fields": {
+        "domain": "igrik.pythonanywhere.com",
+        "name": "igrik blog"
+    }
+},
+{
+    "model": "sites.site",
+    "pk": 2,
+    "fields": {
+        "domain": "127.0.0.1:8000",
+        "name": "localhost"
+    }
+},
+{
+    "model": "flatpages.flatpage",
+    "pk": 1,
+    "fields": {
+        "url": "/about/",
+        "title": "About author",
+        "content": "",
+        "enable_comments": false,
+        "template_name": "about.html",
+        "registration_required": false,
+        "sites": [
+            2,
+            1
+        ]
+    }
+}
+]

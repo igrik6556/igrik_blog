@@ -9,7 +9,7 @@
         <meta name="keywords" content="Python, Django, блог, веб разработка, web" />
         <meta name="description" content="Блог веб разработчика Python/Django" />
         
-    	<title>{% block title %}{% trans "Main" %} {% if page_obj.paginator.num_pages > 1 %}&#187; {{page_obj.number}} {% trans "page" %}{% endif %} &#187; IGRIK{% endblock %}</title>
+    	<title>{% block title %}IGRIK {% trans "blog" %} &#187; {% trans "Main" %} {% if page_obj.paginator.num_pages > 1 %}&#187; {{page_obj.number}} {% trans "page" %}{% endif %}{% endblock %}</title>
         <link rel="shortcut icon" href="{% static "img/favicon.png" %}" type="image/png">
         {% block extends_styles %} {% endblock extends_styles %}
 		{% block styles %}
@@ -127,7 +127,7 @@
     <div class="container">
 	    <div class="row">
             <div class="col-sm-12">Copyright &copy; <a href="{% url "about" %}">igrik</a>, 2016 
-            <span class="pull-right">{% trans "Powered by" %} <img class="py-dj" src="{% static "img/pydj_logo.png" %}" alt="python/django"></span>
+            <span class="pull-right">Powered by <img class="py-dj" src="{% static "img/pydj_logo.png" %}" alt="python/django"></span>
             </div>
 		</div>
     </div>

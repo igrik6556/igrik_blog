@@ -13,7 +13,7 @@
         </div>
         <hr>
 
-        <div class="row" style="padding: 0 0 10px 0;">
+        <div class="row pad-bot10">
         <div class="col-sm-5">
         <script type="text/javascript" src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js" charset="utf-8"></script>
         <script type="text/javascript" src="//yastatic.net/share2/share.js" charset="utf-8"></script>
@@ -22,7 +22,7 @@
     
 	        {% if user.is_superuser %}
                <div class="col-sm-offset-5 col-sm-2 text-right">
-                <a style="padding-right:15px;" href="{% url "blog:article_update" article.slug %}"> <img class="icon" src="{% static "img/update_art.png" %}" alt="{% trans "Edit" %}"></a>
+                <a class="pad-right15" href="{% url "blog:article_update" article.slug %}"> <img class="icon" src="{% static "img/update_art.png" %}" alt="{% trans "Edit" %}"></a>
                 <a href="{% url "blog:article_delete" article.slug %}"> <img class="icon" src="{% static "img/del_art.png" %}" alt="{% trans "Delete" %}"></a>
                </div>
             {% endif %}

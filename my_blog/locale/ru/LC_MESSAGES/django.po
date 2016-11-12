@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-08 00:16+0200\n"
+"POT-Creation-Date: 2016-11-10 23:20+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,7 +24,7 @@ msgstr ""
 msgid "Picture size 200х200"
 msgstr "Размер изображения 200х200"
 
-#: my_blog/models.py:20 my_blog/models.py:23 my_blog/models.py:63
+#: my_blog/models.py:21 my_blog/models.py:24 my_blog/models.py:63
 #: my_blog/templates/my_blog/article_detail.html:9
 #: my_blog/templates/my_blog/article_main.html:15
 #: my_blog/templates/my_blog/category_list.html:4
@@ -32,37 +32,37 @@ msgstr "Размер изображения 200х200"
 msgid "Category"
 msgstr "Категория"
 
-#: my_blog/models.py:21 my_blog/templates/my_blog/_list_categories.html:6
+#: my_blog/models.py:22 my_blog/templates/my_blog/_list_categories.html:6
 msgid "Categories"
 msgstr "Категории"
 
-#: my_blog/models.py:24 my_blog/models.py:70
+#: my_blog/models.py:25 my_blog/models.py:70
 msgid "Slug"
 msgstr "Слаг"
 
-#: my_blog/models.py:41
+#: my_blog/models.py:42
 msgid "Article"
 msgstr "Статья"
 
-#: my_blog/models.py:42 my_blog/templates/my_blog/about.html:12
+#: my_blog/models.py:43 my_blog/templates/my_blog/about.html:12
 #: my_blog/templates/my_blog/article_archive.html:7
 #: my_blog/templates/my_blog/article_main.html:5 templates/base.html:53
 msgid "Articles"
 msgstr "Статьи"
 
-#: my_blog/models.py:45
+#: my_blog/models.py:46
 msgid "Article title"
 msgstr "Заголовок статьи"
 
-#: my_blog/models.py:49
+#: my_blog/models.py:50
 msgid "Article text"
 msgstr "Текст статьи"
 
-#: my_blog/models.py:51
+#: my_blog/models.py:52
 msgid "Date/time publishing"
 msgstr "Дата/Время публикации"
 
-#: my_blog/models.py:55
+#: my_blog/models.py:56
 msgid "Image article"
 msgstr "Изображение для статьи"
 
@@ -113,7 +113,7 @@ msgid "Articles archive"
 msgstr "Архив статей"
 
 #: my_blog/templates/my_blog/article_archive.html:24
-#: my_blog/templates/my_blog/article_main.html:40
+#: my_blog/templates/my_blog/article_main.html:41
 #: my_blog/templates/my_blog/category_list.html:14
 #: my_blog/templates/my_blog/category_list.html:22
 msgid "Soon there will be something interesting"
@@ -135,11 +135,11 @@ msgid "Publication date"
 msgstr "Дата публикации"
 
 #: my_blog/templates/my_blog/article_detail.html:25
-#: my_blog/templates/my_blog/article_main.html:35 my_blog/views.py:94
+#: my_blog/templates/my_blog/article_main.html:36 my_blog/views.py:94
 msgid "Edit"
 msgstr "Редактировать"
 
-#: my_blog/templates/my_blog/article_form.html:31
+#: my_blog/templates/my_blog/article_form.html:30
 msgid "Save"
 msgstr "Сохранить"
 
@@ -147,15 +147,15 @@ msgstr "Сохранить"
 msgid "Private"
 msgstr "Скрытая"
 
-#: my_blog/templates/my_blog/article_main.html:18
+#: my_blog/templates/my_blog/article_main.html:19
 msgid "Article logo"
 msgstr "Изображение для статьи"
 
-#: my_blog/templates/my_blog/article_main.html:30
+#: my_blog/templates/my_blog/article_main.html:31
 msgid "Read more"
 msgstr "Читать полностью"
 
-#: my_blog/templates/my_blog/article_main.html:32
+#: my_blog/templates/my_blog/article_main.html:33
 msgid "Comments"
 msgstr "Комментарии"
 
@@ -203,6 +203,10 @@ msgid "Home"
 msgstr ""
 
 #: templates/base.html:12
+msgid "blog"
+msgstr "блог"
+
+#: templates/base.html:12
 msgid "Main"
 msgstr "Главная"
 
@@ -229,7 +233,3 @@ msgstr "Добавить статью"
 #: templates/base.html:81
 msgid "Admin center"
 msgstr "Админка"
-
-#: templates/base.html:130
-msgid "Powered by"
-msgstr "Работает на"

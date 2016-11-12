@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -59,8 +60,12 @@ WSGI_APPLICATION = 'blog.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'my_db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'igrik_db',
+        'USER': 'igrik',
+        'PASSWORD': 'password',
+        'HOST': 'localhost',
+        'PORT': '8000',
     }
 }
 
@@ -81,6 +86,10 @@ AUTH_PASSWORD_VALIDATORS = [
 
 SITE_ID = 1
 SITE_URL = 'http://igrik.pythonanywhere.com/'
+
+FIXTURE_DIRS = (
+    os.path.join(BASE_DIR, 'fixtures'),
+)
 
 LANGUAGE_CODE = 'ru-RU'
 TIME_ZONE = 'Europe/Kiev'
@@ -108,7 +117,7 @@ PAGINATION_SETTINGS = {
 }
 
 try:
-    from local_settings import *
+    from prod_settings import *
 except ImportError:
     pass
 

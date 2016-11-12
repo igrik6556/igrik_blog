@@ -13,7 +13,7 @@
       <h2 class="no_margin"><a class="no_style_atitle" href="{% url "blog:article_detail" article.category.slug article.slug %}">{{ article.article_title }}</a>
       {% if article.is_private %}<span class="label label-warning label-size">{% trans "Private" %}</span>{% endif %}</h2>
       <p class="text-right">{% trans "Category" %}: <a href="{% url "blog:category_list" article.category.slug %}">{{ article.category }}</a></p>
-      <h6 class="text-right" style="color: grey;">{% trans "Publication date" %}: {{ article.article_datetime }}</h6>
+      <h6 class="text-right color-grey">{% trans "Publication date" %}: {{ article.article_datetime }}</h6>
         <div class="media article_text">
         {% if article.article_image %}
         <img class="art_img media-object" src="{{ article.get_img_300x.url }}" alt="{% trans "Article logo" %} {{ article.article_title }}">

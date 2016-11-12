@@ -212,6 +212,22 @@ img.icon {
     width: 25px;
     height: 25px;
 }
+
+.color-grey {
+    color: grey;
+}
+
+.pad-bot10 {
+    padding: 0 0 10px 0;
+}
+
+.pad-right15 {
+    padding-right: 15px;
+}
+
+.font-s12 {
+    font-size: 12px;
+}
 /*-------------------- Share social buttons -------------*/
 .ya-share2 {
     margin-bottom: 10px;
