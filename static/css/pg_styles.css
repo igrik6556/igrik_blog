@@ -1,0 +1,41 @@
+label {
+	display: inline-block;
+	width: 200px;
+}
+
+input {
+	width: 200px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 30px;
+}
+
+li {
+    list-style: none;
+}
+
+#particles-js {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+}
+
+.page-wrapper {
+	position: absolute;
+	z-index: 2;
+	margin: 0 auto;
+    left: 0;
+    right: 0;
+    width: 800px;
+    padding: 20px;
+}
+
+.help-block {
+	display: inline-block;
+}

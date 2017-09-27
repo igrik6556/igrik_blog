@@ -19,6 +19,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.flatpages',
     'my_blog',
+    'pass_generator',
     'pagedown',
     'markdown_deux',
     'pure_pagination',
@@ -43,6 +44,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, 'templates'),
                  os.path.join(BASE_DIR, 'my_blog/templates/my_blog'),
+                 os.path.join(BASE_DIR, 'pass_generator/templates/pass_generator'),
                  ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -98,7 +100,7 @@ USE_L10N = True
 USE_TZ = True
 
 LOCALE_PATHS = (
-    os.path.join(BASE_DIR, 'my_blog/locale'),
+    os.path.join(BASE_DIR, 'locale'),
 )
 
 STATIC_URL = '/static/'

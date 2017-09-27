@@ -1,0 +1,53 @@
+{% load staticfiles i18n %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% trans "Password generator" %}</title>
+    <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
+    <link rel="stylesheet" href="{% static "css/main.css" %}">
+    <link rel="stylesheet" href="{% static "css/pg_styles.css" %}">
+</head>
+<body>
+<div id="particles-js"></div>
+    <div class="page-wrapper">
+        <form action="" method="post">
+        {% csrf_token %}
+
+    {% for field in form.hidden_fields %}
+        {{ field }}
+    {% endfor %}
+    {% for field in form.visible_fields %}
+        <div>
+        {% if field.errors|length > 0 %}
+          <div class="has-error checkbox">
+            {% for error in field.errors %}
+              <strong>{{ error }}</strong>
+            {% endfor %}
+          </div>
+        {% endif %}
+
+        {{ field.label_tag }}
+        {{ field }}
+        {% if field.help_text %}
+            <div class="help-block">({{ field.help_text }})</div>
+        {% endif %}
+        </div>
+    {% endfor %}
+
+        <input type="submit" value="{% trans "Generate" %}">
+        </form>
+        <ul>
+        {% for item in passwords %}
+            <li>{{ item }}</li>
+        {% endfor %}
+        </ul>
+    </div>
+
+    <script src="{% static "js/particles.js" %}"></script>
+    <script src="{% static "js/app.js" %}"></script>
+    <script src="{% static "js/lib/stats.js" %}"></script>
+</body>
+</html>

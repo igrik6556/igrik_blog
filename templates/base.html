@@ -75,6 +75,20 @@
     {% list_categories user %}
     {% last_articles user %}
     {% filter_dates user %}
+    <div id="side_apps">
+     <div class="panel panel-default">
+      <div class="panel-heading">
+          <h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapseFilterDates">{% trans "Utilities" %}</a></h4>
+      </div>
+    <div id="collapseFilterDates" class="panel-collapse collapse in">
+      <div class="panel-body">
+            <ul>
+                <li><a href="{% url "pass_generator:generator" %}">{% trans "Password generator" %}</a></li>
+            </ul>
+      </div>
+    </div>
+      </div>
+    </div>
   </div>
     {% if user.is_superuser %}
 	    <div class="pad_bot"><a class="btn btn-primary" href="{% url "blog:article_create" %}">{% trans "Add article" %}</a></div>
@@ -126,7 +140,7 @@
 <hr class="no_margin">
     <div class="container">
 	    <div class="row">
-            <div class="col-sm-12">Copyright &copy; <a href="{% url "about" %}">igrik</a>, 2016 
+            <div class="col-sm-12">Copyright &copy; <a href="{% url "about" %}">igrik</a>, 2016 - {% now "o" %}
             <span class="pull-right">Powered by <img class="py-dj" src="{% static "img/pydj_logo.png" %}" alt="python/django"></span>
             </div>
 		</div>
