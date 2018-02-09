@@ -1,21 +1,21 @@
 {% load staticfiles i18n %}
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% trans "Password generator" %}</title>
+    <link rel="shortcut icon" href="{% static "img/favicon.png" %}" type="image/png">
     <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
     <link rel="stylesheet" href="{% static "css/main.css" %}">
     <link rel="stylesheet" href="{% static "css/pg_styles.css" %}">
+    <script type="text/javascript" src="{% static "js/jquery.min.js" %}"></script>
 </head>
 <body>
 <div id="particles-js"></div>
     <div class="page-wrapper">
-        <form action="" method="post">
+        <form id="pass_gen" method="POST">
         {% csrf_token %}
-
     {% for field in form.hidden_fields %}
         {{ field }}
     {% endfor %}
@@ -28,7 +28,6 @@
             {% endfor %}
           </div>
         {% endif %}
-
         {{ field.label_tag }}
         {{ field }}
         {% if field.help_text %}
@@ -36,18 +35,15 @@
         {% endif %}
         </div>
     {% endfor %}
-
         <input type="submit" value="{% trans "Generate" %}">
         </form>
-        <ul>
-        {% for item in passwords %}
-            <li>{{ item }}</li>
-        {% endfor %}
+        <ul id="passwords">
         </ul>
     </div>
 
     <script src="{% static "js/particles.js" %}"></script>
     <script src="{% static "js/app.js" %}"></script>
     <script src="{% static "js/lib/stats.js" %}"></script>
+    <script src="{% static "js/pass_generator/pg_scripts.js" %}"></script>
 </body>
 </html>
