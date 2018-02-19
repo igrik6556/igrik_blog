@@ -1,4 +1,4 @@
-{% load i18n %}
+{% load staticfiles i18n %}
 
 <div id="last_article">
  <div class="panel panel-default">
@@ -10,7 +10,8 @@
     {% if last_articles|length > 0 %}	
     <ul>
 	    {% for article in last_articles %}
-	    <li><a href="{% url "blog:article_detail" article.category.slug article.slug %}">{{ article.article_title }}</a></li>
+	    <li><a href="{% url "blog:article_detail" article.category.slug article.slug %}">{{ article.article_title }}</a>
+        {% if article.is_private %}<img class="hidden-ico" src="{% static "img/hidden.png" %}">{% endif %}</li>
 		{% endfor %}
 	</ul>
     {% else %}

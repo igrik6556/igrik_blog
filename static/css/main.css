@@ -235,6 +235,12 @@ img.icon {
 .font-s12 {
     font-size: 12px;
 }
+
+.hidden-ico {
+    width: 20px;
+    height: 20px;
+    color: #333;
+}
 /*-------------------- Share social buttons -------------*/
 .ya-share2 {
     margin-bottom: 10px;

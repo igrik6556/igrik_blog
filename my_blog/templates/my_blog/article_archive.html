@@ -17,7 +17,7 @@
     <ol class="ol_unstyled">
     {% for article in articles_archive %}
 		<li class="pad_bot">{{ article.article_datetime|date:"d-m-Y" }} | <a href="{% url "blog:article_detail" article.category.slug article.slug %}">
-		{{ article.article_title }}</a></li>
+		{{ article.article_title }}</a> {% if article.is_private %}<img class="hidden-ico" src="{% static "img/hidden.png" %}">{% endif %}</li>
 	{% endfor %}
 	</ol>
 {% else %}
