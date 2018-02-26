@@ -12,6 +12,12 @@
     <script type="text/javascript" src="{% static "js/jquery.min.js" %}"></script>
 </head>
 <body>
+<div class="up_btn">
+    <div id="scroll_btn">
+        <img class="scroll" alt={% trans "Scroll up" %} src="{% static "img/up2.png" %}">
+    </div>
+</div>
+
 <div id="particles-js"></div>
     <div class="page-wrapper">
         <form id="pass_gen" method="POST">
@@ -44,6 +50,6 @@
     <script src="{% static "js/particles.js" %}"></script>
     <script src="{% static "js/app.js" %}"></script>
     <script src="{% static "js/lib/stats.js" %}"></script>
-    <script src="{% static "js/pass_generator/pg_scripts.js" %}"></script>
+    <script src="{% static "js/scripts.js" %}"></script>
 </body>
 </html>

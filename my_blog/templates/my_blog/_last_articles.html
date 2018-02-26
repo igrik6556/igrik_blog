@@ -1,11 +1,13 @@
 {% load staticfiles i18n %}
 
 <div id="last_article">
- <div class="panel panel-default">
-  <div class="panel-heading">
-<h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapseLastArticles">{% trans "Last articles" %}</a></h4>
-  </div>
- <div id="collapseLastArticles" class="panel-collapse collapse in">
+  <div class="panel panel-default">
+    <a data-toggle="collapse" data-parent="#accordion" href="#collapseLastArticles">
+      <div class="panel-heading">
+        <h4 class="panel-title">{% trans "Last articles" %}</h4>
+      </div>
+    </a>
+<div id="collapseLastArticles" class="panel-collapse collapse out">
   <div class="panel-body">
     {% if last_articles|length > 0 %}	
     <ul>

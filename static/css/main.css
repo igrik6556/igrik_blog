@@ -63,6 +63,11 @@
     background-color: #f1eeff;
 }
 
+.panel-heading {
+    background-color: #f1eeff;
+    color: rgb(51, 51, 51);
+}
+
 .panel-group .panel-heading+.panel-collapse>.panel-body,
 .panel-group .panel-heading+.panel-collapse>.list-group {
     border-top: 0;
@@ -77,9 +82,9 @@ pre {
 }
 
 .btn-primary:hover{
-    color:#fff;
-    background-color:#3670a2;
-    border-color:#357ebd
+    color: #fff;
+    background-color: #3670a2;
+    border-color: #357ebd
 }
 
 h1 {
@@ -106,7 +111,8 @@ h2 {
 #last_article,
 #side_archive,
 #categories,
-#side_apps {
+#side_apps,
+#tags_cloud {
     margin: 0 0 5px 0;
     overflow: hidden;
 }
@@ -288,3 +294,4 @@ code.hljs {
     width: 360px;
     height: 360px;
 }
+

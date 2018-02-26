@@ -21,7 +21,11 @@ class Categories(models.Model):
         verbose_name = _("Category")
         verbose_name_plural = _("Categories")
 
-    name = models.CharField(_("Category"), max_length=50)
+    name = models.CharField(
+        _("Category"),
+        max_length=50,
+        unique=True
+    )
     slug = models.SlugField(_("Slug"))
 
     def __str__(self):
@@ -33,6 +37,30 @@ class Categories(models.Model):
 
     def get_absolute_url(self):
         return reverse('blog:category_list', kwargs={'cat_slug': self.slug})
+
+
+class Tag(models.Model):
+    class Meta:
+        db_table = "Tag"
+        verbose_name = _("Tag")
+        verbose_name_plural = _("Tags")
+
+    name = models.CharField(
+        _("Tag name"),
+        max_length=50,
+        unique=True
+    )
+    slug = models.SlugField(_("Slug"))
+
+    def __str__(self):
+        return self.name
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.name)
+        super(Tag, self).save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse('blog:tag_list', kwargs={'tag_slug': self.slug})
 
 
 class Article(models.Model):
@@ -68,6 +96,12 @@ class Article(models.Model):
         default=True
     )
     slug = models.SlugField(_("Slug"))
+    tag = models.ManyToManyField(
+        Tag,
+        verbose_name=_("Article tag"),
+        related_name="tag",
+        blank=True
+    )
 
     objects = ArticleManager()
 

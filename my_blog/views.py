@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from .forms import ArticleForm
-from .models import Article, Categories
+from .models import Article, Categories, Tag
 from pure_pagination.mixins import PaginationMixin
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -54,6 +54,15 @@ class CategoryList(DetailView):
     template_name = "my_blog/category_list.html"
     slug_url_kwarg = "cat_slug"
     model = Categories
+
+
+class TagList(DetailView):
+    """
+    Displays all the articles belonging to the tag.
+    """
+    template_name = "my_blog/tag_list.html"
+    slug_url_kwarg = "tag_slug"
+    model = Tag
 
 
 class ArticleCreate(SuccessMessageMixin, CreateView):

@@ -13,6 +13,13 @@
       <h1 class="no_margin"><a class="no_style_atitle" href="{% url "blog:article_detail" article.category.slug article.slug %}">{{ article.article_title }}</a>
       {% if article.is_private %}<span class="label label-warning label-size">{% trans "Private" %}</span>{% endif %}</h1>
       <p class="text-right">{% trans "Category" %}: <a href="{% url "blog:category_list" article.category.slug %}">{{ article.category }}</a></p>
+      <p class="text-right">{% trans "Tags" %}:
+          {% for t in article.tag.all %}
+          <a href="{% url "blog:tag_list" t.slug %}">{{ t.name }}{% if not forloop.last %}, {% endif %}</a>
+          {% empty %}
+          ---
+          {% endfor %}
+      </p>
       <h6 class="text-right color-grey">{% trans "Publication date" %}: {{ article.article_datetime }}</h6>
         <div class="media article_text">
         {% if article.article_image %}

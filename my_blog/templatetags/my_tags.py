@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from django import template
 from django.db.models import Count
-from my_blog.models import Article, Categories
+from my_blog.models import Article, Categories, Tag
 
 register = template.Library()
 
@@ -33,3 +33,8 @@ def filter_dates(user):
         years = Article.objects.public_articles().datetimes("article_datetime", "year")
         month = Article.objects.public_articles().datetimes("article_datetime", "month")
     return {"years": years, "month": month}
+
+
+@register.inclusion_tag("my_blog/_tags_cloud.html")
+def tags_cloud():
+    return {'cloud_tags': Tag.objects.all()}

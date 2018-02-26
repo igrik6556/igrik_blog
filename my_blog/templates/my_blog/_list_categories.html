@@ -1,12 +1,14 @@
 {% load i18n %}
 
 <div id="categories">
- <div class="panel panel-default">
-  <div class="panel-heading">
-<h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapseCategory">{% trans "Categories" %}</a></h4>
-  </div>
+   <div class="panel panel-default">
+     <a data-toggle="collapse" data-parent="#accordion" href="#collapseCategory">
+       <div class="panel-heading">
+         <h4 class="panel-title">{% trans "Categories" %}</h4>
+       </div>
+     </a>
 <div id="collapseCategory" class="panel-collapse collapse in">
-  <div class="panel-body">
+   <div class="panel-body">
      {% if list_cats|length > 0 %}
       <ul>
            {% for category in list_cats %}
@@ -16,7 +18,7 @@
      {% else %}
       <div class="alert alert-info">{% trans "Coming soon" %}</div>
      {% endif %}
-  </div>
+   </div>
 </div>
-  </div>
+   </div>
 </div>

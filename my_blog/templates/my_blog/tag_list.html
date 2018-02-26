@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load staticfiles i18n %}
+
+{% block title %}{% trans "Tag" %} "{{ tag|lower }}" &#187; IGRIK{% endblock %}
+
+{% block content %}
+<div class="article">
+  <h3 class="pad_bot no_margin">{% trans "Tag" %}: {{ tag|lower }}</h3>
+    <ol class="ol_unstyled">
+    {% if user.is_superuser %}
+    {% for article in tag.tag.all %}
+        <li class="pad_bot">{{ article.article_datetime|date:"d-m-Y" }} | <a href="{% url "blog:article_detail" article.category.slug article.slug %}">{{ article.article_title }}</a></li>
+    {% empty %}
+        <p>{% trans "Soon there will be something interesting" %}!</p>
+	{% endfor %}
+    
+    {% else %}
+    
+    {% for article in tag.tag.public_articles %}
+        <li class="pad_bot">{{ article.article_datetime|date:"d-m-Y" }} | <a href="{% url "blog:article_detail" article.category.slug article.slug %}">{{ article.article_title }}</a></li>
+    {% empty %}
+        <p>{% trans "Soon there will be something interesting" %}!</p>
+	{% endfor %}
+    {% endif %}
+    </ol> 
+</div>
+{% endblock %}
+
+

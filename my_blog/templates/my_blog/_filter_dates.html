@@ -2,10 +2,12 @@
 
 <div id="side_archive">
  <div class="panel panel-default">
-  <div class="panel-heading">
-      <h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapseFilterDates">{% trans "Archive" %}</a></h4>
-  </div>
-<div id="collapseFilterDates" class="panel-collapse collapse in">
+   <a data-toggle="collapse" data-parent="#accordion" href="#collapseFilterDates">
+     <div class="panel-heading">
+      <h4 class="panel-title">{% trans "Archive" %}</h4>
+     </div>
+   </a>
+<div id="collapseFilterDates" class="panel-collapse collapse out">
   <div class="panel-body">
 {% if years|length > 0 %}	
 {% for y in years reversed %}

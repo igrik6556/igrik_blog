@@ -16,5 +16,6 @@ urlpatterns = [
     url(r'archive/$', views.ArticleArchive.as_view(), name='article_archive'),
     url(r'archive/(?P<year>\d{4})/(?P<month>\d+)/$', views.ArticleMonth.as_view(), name='article_month'),
     url(r'^(?P<cat_slug>([-\w]+))/$', views.CategoryList.as_view(), name='category_list'),
+    url(r'^tag/(?P<tag_slug>([-\w]+))/$', views.TagList.as_view(), name='tag_list'),
     url(r'^(?P<cat_slug>([-\w]+))/(?P<slug>([-\w]+))/$', views.ArticleDetail.as_view(), name='article_detail'),
 ]
