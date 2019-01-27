@@ -1,18 +1,27 @@
 # -*- coding: utf-8 -*-
-from .forms import ArticleForm
-from .models import Article, Categories, Tag
-from pure_pagination.mixins import PaginationMixin
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.dates import ArchiveIndexView, MonthArchiveView
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib import messages
+
+from my_blog.forms import ArticleForm
+from my_blog.models import Article, Categories, Tag
+from pure_pagination.mixins import PaginationMixin
 
 from django.utils.translation import ugettext as _
 
 
-class ArticleMain(PaginationMixin, ListView):
+class QuerysetSuperuserFilterMixin(object):
+    def get_queryset(self):
+        qs = super().get_queryset()
+        if not self.request.user.is_superuser:
+            qs = qs.filter(is_private=False)
+        return qs
+
+
+class ArticleMain(PaginationMixin, QuerysetSuperuserFilterMixin, ListView):
     """
     Implements pagination of articles from the database.
     """
@@ -21,27 +30,15 @@ class ArticleMain(PaginationMixin, ListView):
     paginate_by = 10
     page_kwarg = "num_page"
 
-    def get_queryset(self):
-        qs = super(ArticleMain, self).get_queryset()
-        if not self.request.user.is_superuser:
-            qs = qs.filter(is_private=False)
-        return qs
 
-
-class ArticleDetail(DetailView):
+class ArticleDetail(QuerysetSuperuserFilterMixin, DetailView):
     """
     Show full article.
     """
     model = Article
 
-    def get_queryset(self):
-        qs = super(ArticleDetail, self).get_queryset()
-        if not self.request.user.is_superuser:
-            qs = qs.filter(is_private=False)
-        return qs
-
     def get_context_data(self, **kwargs):
-        context = super(ArticleDetail, self).get_context_data(**kwargs)
+        context = super().get_context_data(**kwargs)
         context["previous_article"] = Article.get_previous_article(self, self.request.user)
         context["next_article"] = Article.get_next_article(self, self.request.user)
         return context
@@ -79,7 +76,7 @@ class ArticleCreate(SuccessMessageMixin, CreateView):
         return self.success_url
 
     def get_context_data(self, **kwargs):
-        context = super(ArticleCreate, self).get_context_data(**kwargs)
+        context = super().get_context_data(**kwargs)
         context["title"] = _("Article creation") + " &#187; IGRIK"
         return context
 
@@ -99,7 +96,7 @@ class ArticleUpdate(SuccessMessageMixin, UpdateView):
         return self.success_url
 
     def get_context_data(self, **kwargs):
-        context = super(ArticleUpdate, self).get_context_data(**kwargs)
+        context = super().get_context_data(**kwargs)
         context["title"] = (_("Edit") + " - %s &#187; IGRIK") % self.object.article_title
         return context
 
@@ -114,10 +111,10 @@ class ArticleDelete(DeleteView):
         messages.success(request,
                          _("Article <%s> deleted successfully!") % Article.objects.get(slug=self.kwargs["slug"])
                          )
-        return super(ArticleDelete, self).post(request, *args, **kwargs)
+        return super().post(request, *args, **kwargs)
 
 
-class ArticleArchive(ArchiveIndexView):
+class ArticleArchive(QuerysetSuperuserFilterMixin, ArchiveIndexView):
     model = Article
     date_field = "article_datetime"
     context_object_name = "articles_archive"
@@ -126,14 +123,8 @@ class ArticleArchive(ArchiveIndexView):
     make_object_list = True
     template_name = "my_blog/article_archive.html"
 
-    def get_queryset(self):
-        qs = super(ArticleArchive, self).get_queryset()
-        if not self.request.user.is_superuser:
-            qs = qs.filter(is_private=False)
-        return qs
 
-
-class ArticleMonth(MonthArchiveView):
+class ArticleMonth(QuerysetSuperuserFilterMixin, MonthArchiveView):
     model = Article
     date_field = "article_datetime"
     month_format = "%m"
@@ -142,9 +133,3 @@ class ArticleMonth(MonthArchiveView):
     allow_future = True
     make_object_list = True
     template_name = "my_blog/article_month.html"
-
-    def get_queryset(self):
-        qs = super(ArticleMonth, self).get_queryset()
-        if not self.request.user.is_superuser:
-            qs = qs.filter(is_private=False)
-        return qs

@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from django import forms
-from .models import Article
+
+from my_blog.models import Article
 from pagedown.widgets import PagedownWidget
 
 from django.utils.translation import ugettext as _

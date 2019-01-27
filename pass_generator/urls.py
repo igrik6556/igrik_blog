@@ -1,8 +1,9 @@
-from django.conf.urls import url
+from django.urls import path
 from pass_generator import views
 
 
+app_name = 'pass_generator'
 urlpatterns = [
-    url(r'^$', views.generator_main, name='main'),
-    url(r'^generate/$', views.generate, name='generate'),
+    path('', views.generator_main, name='main'),
+    path('generate/', views.generate, name='generate'),
 ]

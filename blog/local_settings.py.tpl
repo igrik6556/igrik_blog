@@ -1,10 +1,9 @@
 # -*- coding: utf-8 -*-
-
-from settings import *
+from blog.settings import *
 
 SECRET_KEY = 'your_secret_key'
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 

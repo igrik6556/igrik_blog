@@ -1,10 +1,9 @@
 # -*- coding: utf-8 -*-
-
-from settings import *
+from blog.settings import *
 
 SECRET_KEY = 'your_secret_key'
 
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['your_hosts']
 

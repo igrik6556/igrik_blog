@@ -2,7 +2,8 @@
 from django.db import models
 from django.utils import timezone
 from django.core.exceptions import ObjectDoesNotExist
-from django.core.urlresolvers import reverse
+from django.urls import reverse
+
 from uuslug import slugify
 from sorl.thumbnail import get_thumbnail, delete
 
@@ -33,7 +34,7 @@ class Categories(models.Model):
 
     def save(self):
         self.slug = slugify(self.name)
-        super(Categories, self).save()
+        super().save()
 
     def get_absolute_url(self):
         return reverse('blog:category_list', kwargs={'cat_slug': self.slug})
@@ -57,7 +58,7 @@ class Tag(models.Model):
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
-        super(Tag, self).save(*args, **kwargs)
+        super().save(*args, **kwargs)
 
     def get_absolute_url(self):
         return reverse('blog:tag_list', kwargs={'tag_slug': self.slug})
@@ -89,7 +90,8 @@ class Article(models.Model):
     category = models.ForeignKey(
         Categories,
         verbose_name=_("Category"),
-        related_name="category"
+        related_name="category",
+        on_delete=models.CASCADE
     )
     is_private = models.BooleanField(
         _("Private article"),
@@ -130,11 +132,11 @@ class Article(models.Model):
                 curr_article.article_image.delete(save=False)
         except ObjectDoesNotExist:
             pass
-        super(Article, self).save(*args, **kwargs)
+        super().save(*args, **kwargs)
 
     def delete(self, *args, **kwargs):
         self.article_image.delete(save=False)
-        super(Article, self).delete(*args, **kwargs)
+        super().delete(*args, **kwargs)
 
     def get_img_300x(self):
         return get_thumbnail(self.article_image, '300', crop='center', quality=99)

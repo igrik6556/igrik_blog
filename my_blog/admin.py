@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 from django.contrib import admin
-from .models import Article, Categories, Tag
 from django.db import models
+
+from my_blog.models import Article, Categories, Tag
 from pagedown.widgets import AdminPagedownWidget
 
 from django.utils.translation import ugettext as _

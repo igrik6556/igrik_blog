@@ -1,16 +1,24 @@
 {% extends 'base.html' %}
 {% load my_tags staticfiles i18n %}
 
-{% block title %}{% trans "Articles archive" %} ({{archive_month.0.article_datetime|date:"F Y"|lower}}) &#187; IGRIK{% endblock %}
+{% block title %}
+    {% trans "Articles archive" %}
+    {% if archive_month %}({{archive_month.0.article_datetime|date:"F Y"|lower}}){% endif %}
+    &#187; IGRIK
+{% endblock %}
 
 {% block content %}    
 <div class="article">
-    <h3 class="pad_bot no_margin">{% trans "Articles archive" %} <span class="font-s12">({{ archive_month.0.article_datetime|date:"F Y"|lower }}):</span></h3>
+    <h3 class="pad_bot no_margin">{% trans "Articles archive" %}
+        {% if archive_month %}<span class="font-s12">({{ archive_month.0.article_datetime|date:"F Y"|lower }})</span>{% endif %}
+    </h3>
     <ol class="ol_unstyled">
     {% for article in archive_month %}
 		<li class="pad_bot">{{ article.article_datetime|date:"d-m-Y" }} | <a href="{% url "blog:article_detail" article.category.slug article.slug %}">{{ article.article_title }}</a>
         {% if article.is_private %}<img class="hidden-ico" src="{% static "img/hidden.png" %}">{% endif %}</li>
-	{% endfor %}
+	{% empty %}
+        {% trans "empty" %}
+    {% endfor %}
     </ol>
 </div>
 {% endblock %}
