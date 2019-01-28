@@ -11,7 +11,7 @@ from django.contrib.flatpages import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('about/', views.flatpage, {'url': '/about/'}, name="about"),
-    path('pass_generator/', include('pass_generator.urls')),
+    path('apps/', include('dif_apps.urls')),
     path('', include('my_blog.urls')),
 ]
 

@@ -9,7 +9,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('pass_generator', '0001_initial'),
+        ('dif_apps', '0001_initial'),
     ]
 
     operations = [

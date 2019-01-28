@@ -19,7 +19,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.flatpages',
     'my_blog',
-    'pass_generator',
+    'dif_apps',
     'pagedown',
     'markdown_deux',
     'pure_pagination',
@@ -43,7 +43,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, 'templates'),
                  os.path.join(BASE_DIR, 'my_blog/templates/my_blog'),
-                 os.path.join(BASE_DIR, 'pass_generator/templates/pass_generator'),
+                 os.path.join(BASE_DIR, 'dif_apps/templates/dif_apps'),
                  ],
         'APP_DIRS': True,
         'OPTIONS': {

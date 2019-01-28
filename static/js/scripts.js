@@ -16,25 +16,25 @@
       }, delay);
     });
   });
-  
-// Ajaxify PASS_GENERATOR
 
+
+// Ajaxify PASS_GENERATOR
 var csrftoken = $('input[name=csrfmiddlewaretoken]').val();
 
 $('#pass_gen').on('submit', function(event){
     event.preventDefault();
     $.ajax({
         headers: {"X-CSRFToken": csrftoken},
-        url : "generate/",
+        url : "/apps/generate-password/",
         type : "POST",
         data : {
-            up_letters : $('#id_up_letters').prop('checked'),
-            low_letters : $('#id_low_letters').prop('checked'),
+            uppercase_let : $('#id_uppercase_let').prop('checked'),
+            lowercase_let : $('#id_lowercase_let').prop('checked'),
             digits : $('#id_digits').prop('checked'),
-            spec_symbols : $('#id_spec_symbols').prop('checked'),
+            special_symbols : $('#id_special_symbols').prop('checked'),
             user_symbols : $('#id_user_symbols').val(),
-            length : $('#id_length').val(),
-            number : $('#id_number').val()
+            password_length : $('#id_password_length').val(),
+            password_count : $('#id_password_count').val()
         },
         success : function(json) {
             $("#passwords").html('');

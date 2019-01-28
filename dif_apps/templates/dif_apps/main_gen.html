@@ -21,27 +21,27 @@
 <div id="particles-js"></div>
     <div class="page-wrapper">
         <form id="pass_gen" method="POST">
-        {% csrf_token %}
-    {% for field in form.hidden_fields %}
-        {{ field }}
-    {% endfor %}
-    {% for field in form.visible_fields %}
-        <div>
-        {% if field.errors|length > 0 %}
-          <div class="has-error checkbox">
-            {% for error in field.errors %}
-              <strong>{{ error }}</strong>
+            {% csrf_token %}
+            {% for field in form.hidden_fields %}
+                {{ field }}
             {% endfor %}
-          </div>
-        {% endif %}
-        {{ field.label_tag }}
-        {{ field }}
-        {% if field.help_text %}
-            <div class="help-block">({{ field.help_text }})</div>
-        {% endif %}
-        </div>
-    {% endfor %}
-        <input type="submit" value="{% trans "Generate" %}">
+            {% for field in form.visible_fields %}
+                <div>
+                {% if field.errors|length > 0 %}
+                  <div class="has-error checkbox">
+                    {% for error in field.errors %}
+                      <strong>{{ error }}</strong>
+                    {% endfor %}
+                  </div>
+                {% endif %}
+                {{ field.label_tag }}
+                {{ field }}
+                {% if field.help_text %}
+                    <div class="help-block">({{ field.help_text }})</div>
+                {% endif %}
+                </div>
+            {% endfor %}
+            <input type="submit" value="{% trans "Generate" %}">
         </form>
         <ul id="passwords">
         </ul>
